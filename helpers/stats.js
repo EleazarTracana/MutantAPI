@@ -8,6 +8,6 @@ module.exports = {
                percentage = ((countMutants/100) * countHumans)/100;
            }
         }
-        return percentage.toFixed(2);
+        return percentage;
     }
 }
