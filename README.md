@@ -12,7 +12,7 @@ Installation:
 5. Replace "databaseName" property in config.js with your database name.
 6. Execute command npm start.
 
-Note: Port 3000 should be not blocked by firewall.
+Note: Port 3000 should not be blocked by firewall.
 
 Testing:
 
