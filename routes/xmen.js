@@ -1,7 +1,7 @@
 module.exports = (app,db) => {
     const controller = require("../controllers/xmen")(db);
 
-    app.post("/mutant/",(req,res,next) =>{
+    app.post("xmen/mutant/",(req,res,next) =>{
         var {dna}       = req.body;
         try{
            var isMutant    = controller.IsMutant(dna);
@@ -16,7 +16,7 @@ module.exports = (app,db) => {
             res.status(500).send(error);
         }
     });
-    app.get("/stats/",(req,res,next) =>{
+    app.get("xmen/stats/",(req,res,next) =>{
         try{
             controller.GetStats(res);
         }catch(error){
