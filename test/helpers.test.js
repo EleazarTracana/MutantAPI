@@ -86,3 +86,25 @@ const assert         = require('assert'),
         result = helperMid.checkLetterAndEquity(body,letters);
         assert.strictEqual(result,true);
     })
+    it('IsPossibleToContinue - Verified',() => {
+        var letter = "A",
+            counters = {  
+            "A": 0,
+            "C": 1,
+            "G": 0,
+            "T": 0
+        }
+        result = helperAlg.IsPossibleToContinue(letter,counters,5,1)
+        assert.strictEqual(result,true);
+    })
+    it('IsPossibleToContinue - Not Verified',() => {
+        var letter = "A",
+            counters = {  
+            "A": 0,
+            "C": 1,
+            "G": 0,
+            "T": 0
+        }
+        result = helperAlg.IsPossibleToContinue(letter,counters,5,3)
+        assert.strictEqual(result,false);
+    })
