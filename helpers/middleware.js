@@ -9,6 +9,7 @@ module.exports = {
             if(value.length != y){
                 IsEquitable = false;
             }
+            j = 0;
             while(j < dna[i].length && IsEquitable){
                 var IsValid = letters.split("").find(x => x == dna[i][j]);
                 if(!IsValid){
