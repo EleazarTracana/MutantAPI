@@ -11,6 +11,7 @@ module.exports = {
               isSecuence = false;
                 do{
                     var counters = helper.CreateCounters(),
+                        possibleToContinue = true,
                          j = 0; 
                     do{
                          if(direction == dir.Horizontal){
@@ -19,8 +20,9 @@ module.exports = {
                             letter = dnaSec[j][i]
                          }
                          isSecuence = helper.ComputeCounters(letter,counters);
+                         possibleToContinue = helper.IsPossibleToContinue(letter,counters,constantN,j+1);
                         j++;
-                     }while(!isSecuence  && j < constantN);
+                     }while(!isSecuence  && j < constantN && possibleToContinue);
                     i++;
                  }while(!isSecuence && i < constantN);
             return isSecuence;
@@ -31,14 +33,16 @@ module.exports = {
               isSecuence = false;
                 do{
                     var counters = helper.CreateCounters(),
+                        possibleToContinue = true;
                         j =  0,
                         y =  i;
                     do{
                         var letter = dnaSec[j][y];
                             isSecuence = helper.ComputeCounters(letter,counters);
+                            possibleToContinue = helper.IsPossibleToContinue(letter,counters,constantN,j+1);
                             j++
                             y--
-                    }while(!isSecuence && j < constantN && y >= 0 )
+                    }while(!isSecuence && j < constantN && y >= 0 && possibleToContinue)
                     i--;
                 }while(!isSecuence && i >= maxSec - 1);
             return isSecuence;
@@ -49,16 +53,18 @@ module.exports = {
             isSecuence = false;
                 do{
                     var counters = helper.CreateCounters(),
+                        possibleToContinue = true,
                         j = i,
                         y = constantN - 1;
                     do{
                         var letter = dnaSec[j][y];
                             isSecuence = helper.ComputeCounters(letter,counters);
+                            possibleToContinue = helper.IsPossibleToContinue(letter,counters,constantN,j+1);
                             j++
                             y-- 
-                    }while(!isSecuence && y > 0 && j < constantN)
+                    }while(!isSecuence && y > 0 && j < constantN && possibleToContinue)
                     i++;
-                }while(!isSecuence && i < maxSec - 1);
+                }while(!isSecuence && i <= constantN - maxSec);
             return isSecuence;
     },
     LeftUpOblique: (dnaSec) => {
@@ -67,16 +73,18 @@ module.exports = {
               isSecuence = false;
               do{
                 var counters = helper.CreateCounters(),
+                    possibleToContinue = true,
                     j = 0,
-                    y = 1;
+                    y = i;
                 do{
                     var letter = dnaSec[j][y];
                         isSecuence = helper.ComputeCounters(letter,counters);
+                        possibleToContinue = helper.IsPossibleToContinue(letter,counters,constantN,y+1);
                         j++;
                         y++;
-                }while(!isSecuence && j < constantN  && y < constantN);
+                }while(!isSecuence && j < constantN  && y < constantN && possibleToContinue);
                 i++;
-              }while(!isSecuence && i < constantN - maxSec);
+              }while(!isSecuence && i <= constantN - maxSec);
         return isSecuence;
     },
     LeftDownOblique: (dnaSec) => {
@@ -90,11 +98,12 @@ module.exports = {
                 do{
                     var letter = dnaSec[j][y];
                     isSecuence = helper.ComputeCounters(letter,counters);
+                    possibleToContinue = helper.IsPossibleToContinue(letter,counters,constantN,j+1);
                     j++;
                     y++;
-                }while(!isSecuence && j < constantN  && y < constantN);
+                }while(!isSecuence && j < constantN  && y < constantN && possibleToContinue);
                 i++;
-              }while(!isSecuence && i < constantN - maxSec);
+              }while(!isSecuence && i <= constantN - maxSec);
         return isSecuence;
     },
 }
