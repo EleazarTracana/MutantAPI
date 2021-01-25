@@ -16,8 +16,22 @@ if you want to use your own database and don't share the current one:
 Note: Port 3000 should not be blocked by firewall.
 
 
-# Usage:
+# Resources:
 
+Production API: http://ec2-52-15-184-39.us-east-2.compute.amazonaws.com:3000/xmen/mutant
+
+1) /xmen/mutant
+Verb: Post
+Headers: none
+Body Type: Json
+Definition: returns 403 status if its human, 200 if its mutant and save data in database
+
+
+2) /xmen/stats
+Verb: Get
+Headers: none
+Body Type: none
+Definition: ratio of mutants amoung humans
 
 
 # Testing:
